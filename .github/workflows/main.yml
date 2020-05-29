@@ -1,0 +1,17 @@
+on: [push]
+
+jobs:
+  hello_world_job:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: reznikmm/upload-bintray-action@master
+        with:
+          username: reznikmm
+          repository: libadalang
+          package: libadalang
+          version: 0.1-git
+          sourcePath: 'README.*'
+          override: 1
+          apiKey: ${{secrets.BINTRAY_API_KEY}}
+
