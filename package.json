@@ -1,0 +1,29 @@
+{
+  "name": "upload-bintray-action",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/reznikmm/upload-bintray-action.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/reznikmm/upload-bintray-action/issues"
+  },
+  "homepage": "https://github.com/reznikmm/upload-bintray-action#readme",
+  "description": "",
+  "dependencies": {
+    "@actions/core": "^1.2.4",
+    "@actions/github": "^2.2.0",
+    "@actions/glob": "^0.1.0",
+    "base-64": "^0.1.0",
+    "fs": "0.0.1-security",
+    "node-fetch": "^2.6.0",
+    "path": "^0.12.7"
+  }
+}
