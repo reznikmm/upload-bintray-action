@@ -4,6 +4,9 @@ branding:
   icon: 'upload-cloud'
   color: 'green'
 inputs:
+  subject:
+    description: "Bintray subject (repo owner)"
+    required: true
   repository:
     description: "Bintray repository name"
     required: true

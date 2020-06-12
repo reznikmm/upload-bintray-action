@@ -8,6 +8,7 @@ const base64 = require('base-64');
 
 (async () => {
     try {
+        const subject = core.getInput('subject');
         const repository = core.getInput('repository');
         const package = core.getInput('package');
         const version = core.getInput('version');
@@ -21,7 +22,7 @@ const base64 = require('base-64');
         for await (const file of globber.globGenerator()) {
             const basename = path.basename(file);
             const url = 'https://api.bintray.com/' +
-                `/content/${username}/${repository}/${basename}`;
+                `/content/${subject}/${repository}/${basename}`;
             const size = fs.statSync(file).size;
             const options = {
                 method: 'PUT',
