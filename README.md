@@ -4,27 +4,28 @@ This action uploads files to the [BinTray](https://bintray.com/) site.
 
 ## Inputs
 ### subject
-**Required** Bintray subject (repository owner)
+**Required** Bintray subject (repository owner). Default `"subject"`.
 
 ### repository
-**Required** Bintray repository name
+**Required** Bintray repository name. Default `"repo"`.
 
 ### package
-**Required** Bintray package name
+**Required** Bintray package name. Default `"package"`.
 
 ### version
-**Required** Binary version number
+**Required** Binary version number. Default `"version"`.
+
 ### sourcePath
-**Required** Path to source binary to upload
+**Required** Path to source binary to upload. Default `"*.tar.gz"`.
 
 ### username
-**Required** Bintray username
+**Required** Bintray username to authenticate. Default `"username"`.
 
 ### apiKey
-**Required** Bintray API Key
+**Required** Bintray API Key. Default `"secret"`.
 
 ### override
-**Required** To override an already-published artifact you need to set this to 1
+**Required** To override an already-published artifact you need to set this to 1. Default `"0"`.
 
 ## Example usage
 ```

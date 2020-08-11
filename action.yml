@@ -7,28 +7,35 @@ inputs:
   subject:
     description: "Bintray subject (repo owner)"
     required: true
+    default: 'subject'
   repository:
     description: "Bintray repository name"
     required: true
+    default: 'repo'
   package:
     description: "Bintray package name"
     required: true
+    default: 'package'
   version:
     description: "Binary version number"
     required: true
+    default: 'version'
   sourcePath:
     description: "Path to source binary to upload"
     required: true
+    default: '*.tar.gz'
   username:
     description: "Bintray username"
     required: true
+    default: 'username'
   apiKey:
     description: "Bintray API Key"
     required: true
+    default: 'secret'
   override:
     description: "To override an already-published artifact you need to set this to 1"
     required: true
-outputs:
+    default: '0'
 runs:
   using: 'node12'
   main: 'index.js'
