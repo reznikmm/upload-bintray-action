@@ -31,7 +31,7 @@ inputs:
   apiKey:
     description: "Bintray API Key"
     required: true
-    default: 'secret'
+    default: ''
   override:
     description: "To override an already-published artifact you need to set this to 1"
     required: true

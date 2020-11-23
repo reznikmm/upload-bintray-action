@@ -17,6 +17,11 @@ const base64 = require('base-64');
         const apiKey = core.getInput('apiKey');
         const sourcePath = core.getInput('sourcePath');
 
+        if (!apiKey){
+            core.warning('apiKey was not set. Skipping the upload.');
+            return;
+        }
+
         const globber = await glob.create(sourcePath);
 
         for await (const file of globber.globGenerator()) {

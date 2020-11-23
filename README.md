@@ -22,7 +22,7 @@ This action uploads files to the [BinTray](https://bintray.com/) site.
 **Required** Bintray username to authenticate. Default `"username"`.
 
 ### apiKey
-**Required** Bintray API Key. Default `"secret"`.
+**Required** Bintray API Key. Default `"secret"`. Don't upload if it's empty.
 
 ### override
 **Required** To override an already-published artifact you need to set this to 1. Default `"0"`.
