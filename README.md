@@ -13,7 +13,8 @@ This action uploads files to the [BinTray](https://bintray.com/) site.
 **Required** Bintray package name. Default `"package"`.
 
 ### version
-**Required** Binary version number. Default `"version"`.
+**Required** Binary version number. Default `"version"`. The action will
+try to create this version before uploading.
 
 ### sourcePath
 **Required** Path to source binary to upload. Default `"*.tar.gz"`.
@@ -22,7 +23,7 @@ This action uploads files to the [BinTray](https://bintray.com/) site.
 **Required** Bintray username to authenticate. Default `"username"`.
 
 ### apiKey
-**Required** Bintray API Key. Default `"secret"`. Don't upload if it's empty.
+**Required** Bintray API Key. Default `"secret"`. Won't upload if it's empty.
 
 ### override
 **Required** To override an already-published artifact you need to set this to 1. Default `"0"`.

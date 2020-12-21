@@ -22,6 +22,23 @@ const base64 = require('base-64');
             return;
         }
 
+        {  /* create version */
+            const url = 'https://api.bintray.com/' +
+                `/packages/${subject}/${repository}/${package}/versions`;
+            
+            const data = {name: version, desc: `Version ${version}`};
+            const options = {
+                method: 'POST',
+                body: JSON.stringify(data),
+                headers: {
+                    'Authorization': 'Basic ' + base64.encode (`${username}:${apiKey}`),
+                    'Content-Type': 'application/json'
+                }
+            };
+            const response = await fetch(url, options);
+            console.log('Create version: ', response);
+        }
+
         const globber = await glob.create(sourcePath);
 
         for await (const file of globber.globGenerator()) {
