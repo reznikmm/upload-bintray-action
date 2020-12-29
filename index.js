@@ -12,6 +12,7 @@ const base64 = require('base-64');
         const repository = core.getInput('repository');
         const package = core.getInput('package');
         const version = core.getInput('version');
+        const versionDesc = core.getInput('versionDesc');
         const username = core.getInput('username');
         const override = core.getInput('override');
         const apiKey = core.getInput('apiKey');
@@ -26,8 +27,8 @@ const base64 = require('base-64');
         {  /* create version */
             const url = 'https://api.bintray.com/' +
                 `/packages/${subject}/${repository}/${package}/versions`;
-            
-            const data = {name: version, desc: `Version ${version}`};
+            const bintrayVersionDesc = versionDesc ? versionDesc : `Version ${version}`;
+            const data = {name: version, desc: bintrayVersionDesc};
             const options = {
                 method: 'POST',
                 body: JSON.stringify(data),
