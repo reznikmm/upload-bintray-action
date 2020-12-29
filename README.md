@@ -16,6 +16,9 @@ This action uploads files to the [BinTray](https://bintray.com/) site.
 **Required** Binary version number. Default `"version"`. The action will
 try to create this version before uploading.
 
+### versionDesc
+**Optional** Version description on Bintray. Default `"Version: ${version}"`.
+
 ### sourcePath
 **Required** Path to source binary to upload. Default `"*.tar.gz"`.
 
