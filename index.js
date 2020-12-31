@@ -27,13 +27,15 @@ const base64 = require('base-64');
         {  /* create version */
             const url = 'https://api.bintray.com/' +
                 `/packages/${subject}/${repository}/${package}/versions`;
-            const bintrayVersionDesc = versionDesc ? versionDesc : `Version ${version}`;
+            const bintrayVersionDesc = versionDesc ?
+                versionDesc : `Version ${version}`;
             const data = {name: version, desc: bintrayVersionDesc};
             const options = {
                 method: 'POST',
                 body: JSON.stringify(data),
                 headers: {
-                    'Authorization': 'Basic ' + base64.encode (`${username}:${apiKey}`),
+                    'Authorization': 'Basic ' +
+                       base64.encode (`${username}:${apiKey}`),
                     'Content-Type': 'application/json'
                 }
             };
@@ -44,7 +46,9 @@ const base64 = require('base-64');
         const globber = await glob.create(sourcePath);
 
         for await (const file of globber.globGenerator()) {
-            const bintrayPath = destinationPath + '/' + path.basename(file);
+            const basename = path.basename(file);
+            const bintrayPath = destinationPath ?
+                `${destinationPath}/${basename}` : basename;
             const url = 'https://api.bintray.com/' +
                 `/content/${subject}/${repository}/${bintrayPath}`;
             const size = fs.statSync(file).size;
@@ -52,7 +56,8 @@ const base64 = require('base-64');
                 method: 'PUT',
                 body: fs.createReadStream(file),
                 headers: {
-                    'Authorization': 'Basic ' + base64.encode (`${username}:${apiKey}`),
+                    'Authorization': 'Basic ' +
+                        base64.encode (`${username}:${apiKey}`),
                     'Content-Type': 'application/octet-stream',
                     'Content-Length': size,
                     'X-Bintray-Package': package,
