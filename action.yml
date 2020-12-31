@@ -28,6 +28,10 @@ inputs:
     description: "Path to source binary to upload"
     required: true
     default: '*.tar.gz'
+  destinationPath:
+    description: "Destination path on Bintray"
+    required: false
+    default: ''
   username:
     description: "Bintray username"
     required: true

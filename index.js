@@ -17,6 +17,7 @@ const base64 = require('base-64');
         const override = core.getInput('override');
         const apiKey = core.getInput('apiKey');
         const sourcePath = core.getInput('sourcePath');
+        const destinationPath = core.getInput('destinationPath');
 
         if (!apiKey){
             core.warning('apiKey was not set. Skipping the upload.');
@@ -26,7 +27,7 @@ const base64 = require('base-64');
         {  /* create version */
             const url = 'https://api.bintray.com/' +
                 `/packages/${subject}/${repository}/${package}/versions`;
-            const bintrayVersionDesc = versionDesc.length > 0 ? versionDesc : `Version ${version}`
+            const bintrayVersionDesc = versionDesc ? versionDesc : `Version ${version}`;
             const data = {name: version, desc: bintrayVersionDesc};
             const options = {
                 method: 'POST',
@@ -43,9 +44,9 @@ const base64 = require('base-64');
         const globber = await glob.create(sourcePath);
 
         for await (const file of globber.globGenerator()) {
-            const basename = path.basename(file);
+            const bintrayPath = destinationPath + '/' + path.basename(file);
             const url = 'https://api.bintray.com/' +
-                `/content/${subject}/${repository}/${basename}`;
+                `/content/${subject}/${repository}/${bintrayPath}`;
             const size = fs.statSync(file).size;
             const options = {
                 method: 'PUT',
@@ -63,7 +64,7 @@ const base64 = require('base-64');
             const response = await fetch(url, options);
 
             if (response.ok) {
-                console.log(`Uploaded ${basename}.`);
+                console.log(`Uploaded ${bintrayPath}.`);
             } else {
                 console.log('Error:', response);
                 core.setFailed('Upload failed');

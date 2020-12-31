@@ -22,6 +22,9 @@ try to create this version before uploading.
 ### sourcePath
 **Required** Path to source binary to upload. Default `"*.tar.gz"`.
 
+### destinationPath
+**Optional** Destination path on Bintray. Default `""`.
+
 ### username
 **Required** Bintray username to authenticate. Default `"username"`.
 
