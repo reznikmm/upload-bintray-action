@@ -34,6 +34,9 @@ try to create this version before uploading.
 ### override
 **Required** To override an already-published artifact you need to set this to 1. Default `"0"`.
 
+### showInDownloads
+**Optional** Show the file in the Download List; to enable set this to 1. Default `"0"`.
+
 ## Example usage
 ```
       - uses: reznikmm/upload-bintray-action@v2
@@ -44,6 +47,7 @@ try to create this version before uploading.
           version: 0.1-git
           sourcePath: '*.tar.gz'
           override: 1
+          showInDownloads: 1
           username: reznikmm
           apiKey: ${{secrets.BINTRAY_API_KEY}}
 ```
