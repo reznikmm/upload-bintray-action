@@ -36,7 +36,7 @@ try to create this version before uploading.
 
 ## Example usage
 ```
-      - uses: reznikmm/upload-bintray-action@v2
+      - uses: reznikmm/upload-bintray-action@v4
         with:
           subject: reznikmm
           repository: libadalang
