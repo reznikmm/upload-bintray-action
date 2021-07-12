@@ -18,6 +18,7 @@ const base64 = require('base-64');
         const apiKey = core.getInput('apiKey');
         const sourcePath = core.getInput('sourcePath');
         const destinationPath = core.getInput('destinationPath');
+        const showInDownloads = core.getInput('showInDownloads');
 
         if (!apiKey){
             core.warning('apiKey was not set. Skipping the upload.');
@@ -74,6 +75,29 @@ const base64 = require('base-64');
                 console.log('Error:', response);
                 core.setFailed('Upload failed');
             };
+
+            if (showInDownloads && showInDownloads.toString() == '1') {
+                const metaUrl = 'https://api.bintray.com/' +
+                    `/file_metadata/${subject}/${repository}/${bintrayPath}`;
+                const metaOptions = {
+                    method: 'PUT',
+                    body: '{ "list_in_downloads": true }',
+                    headers: {
+                        'Authorization': 'Basic ' +
+                            base64.encode (`${username}:${apiKey}`),
+                        'Content-Type': 'application/json'
+                    }
+                };
+                const metaResponse = await fetch(metaUrl, metaOptions);
+
+                if (response.ok) {
+                    console.log(`File shown in download list: ${bintrayPath}.`);
+                } else {
+                    console.log('Error:', response);
+                    core.setFailed('Error adding file to download list');
+                };
+            }
+
         };
     } catch (error) {
         core.setFailed(error.message);
